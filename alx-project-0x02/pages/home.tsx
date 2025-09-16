@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "@/components/common/Card";
+import { type CardProps };
 
 export default function HomePage() {
   return (
