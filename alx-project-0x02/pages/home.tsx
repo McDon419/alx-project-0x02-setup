@@ -1,12 +1,10 @@
-import Link from "next/link";
 import React from "react";
 
-export default function Header() {
+export default function HomePage() {
   return (
-    <header style={{ padding: "1rem", background: "#f4f4f4" }}>
-      <nav style={{ display: "flex", gap: "1rem" }}>
-        <Link href="/home">Home</Link>
-      </nav>
-    </header>
+    <div>
+      <h1>Welcome to the Home Page</h1>
+      <p>This is the Home page of the app.</p>
+    </div>
   );
 }
