@@ -1,10 +1,12 @@
+import Link from "next/link";
 import React from "react";
 
-export default function AboutPage() {
+export default function Header() {
   return (
-    <div>
-      <h1>About Us</h1>
-      <p>This is the About page of the app.</p>
-    </div>
+    <header style={{ padding: "1rem", background: "#f4f4f4" }}>
+      <nav style={{ display: "flex", gap: "1rem" }}>
+        <Link href="/about">About</Link>
+      </nav>
+    </header>
   );
 }
