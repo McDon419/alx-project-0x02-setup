@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "@/components/layout/Header";
 import PostCard from "@/components/common/PostCard";
 import { PostProps } from "@/interfaces";
 
-export default function PostsPage() {
-  const [posts, setPosts] = useState<PostProps[]>([]);
+interface PostsPageProps {
+  posts: PostProps[];
+}
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-        const data: PostProps[] = await res.json();
-        setPosts(data.slice(0, 10)); // display only first 10 for brevity
-      } catch (error) {
-        console.error("Failed to fetch posts:", error);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
+export default function PostsPage({ posts }: PostsPageProps) {
   return (
     <div>
       <Header />
@@ -39,4 +27,16 @@ export default function PostsPage() {
       </main>
     </div>
   );
+}
+
+// ✅ Use Next.js getStaticProps to fetch posts at build time
+export async function getStaticProps() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data: PostProps[] = await res.json();
+
+  return {
+    props: {
+      posts: data.slice(0, 10), // pass first 10 posts
+    },
+  };
 }
